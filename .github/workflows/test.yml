@@ -12,9 +12,6 @@ jobs:
         with:
           node-version: '10.x'
 
-      - name: Install Qt
-        uses: jurplel/install-qt-action@v2
-
       - name: "npm install"
         run: npm install
 
@@ -25,6 +22,19 @@ jobs:
         uses: ./
         with:
           plugins: qt appimage
+
+      - name: List LinuxDeploy plugins
+        run: |
+          linuxdeploy-x86_64.AppImage --list-plugins
+        shell: bash
+
+      - name: Install Qt
+        uses: jurplel/install-qt-action@v2
+
+      - name: Install dependency
+        run: |
+          sudo apt install -y libxkbcommon-x11-0
+        shell: bash
 
       - name: Configure test Qt project
         run: |
@@ -39,10 +49,6 @@ jobs:
         run: |
           cd tests/QtWidgetsApplication/build
           mkdir -p target/usr/bin
-          cp QtWidgetsApplication target/usr/bin/
-          linuxdeploy-x86_64.AppImage --plugin qt --output appimage target/usr/bin/QtWidgetsApplication
-          ldd target/usr/bin/QtWidgetsApplication
-          LD_DEBUG=libs target/usr/bin/QtWidgetsApplication &
-          sleep 5
-          killall QtWidgetsApplication && echo "SUCCESS"
+          linuxdeploy-x86_64.AppImage --plugin=qt --output=appimage --create-desktop-file --executable=QtWidgetsApplication --appdir target --icon-file=../QtWidgetsApplication.svg
+          echo "SUCCESS"
         shell: bash

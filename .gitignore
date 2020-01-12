@@ -98,3 +98,5 @@ typings/
 # test files
 lib/
 node_modules/
+build
+
