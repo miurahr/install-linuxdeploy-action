@@ -1,0 +1,14 @@
+name: 'Install linuxdeploy'
+description: 'Install Linuxdeploy on your Github Actions workflows with just one simple action'
+author: 'miurahr'
+branding:
+  icon: 'package'
+  color: 'green'
+inputs:
+  dir:
+    description: 'Directory to install'
+  plugins:
+    description: 'Plugin modules to install'
+runs:
+  using: 'node12'
+  main: 'lib/main.js'

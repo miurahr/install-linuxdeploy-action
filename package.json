@@ -1,0 +1,24 @@
+{
+  "name": "install-linuxdeploy-action",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Install linuxdeploy action for github actions",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/miurahr/install-linuxdeploy-action.git"
+  },
+  "author": "miurahr",
+  "license": "MIT",
+  "dependencies": {
+    "@actions/core": "^1.0.0",
+    "@actions/exec": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.4",
+    "typescript": "^3.5.1"
+  }
+}
