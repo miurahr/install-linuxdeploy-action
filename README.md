@@ -1,6 +1,6 @@
 # `install-linuxdeploy-action`
 
-Installing LinuxDeploy on Github Actions workflows manually is the worst.
+Installing LinuxDeploy on Github Actions workflow manually is the worst.
 
 See linuxdeploy utility details on [LinuxDeploy project](https://github.com/linuxdeploy/linuxdeploy) home.
 
@@ -8,6 +8,8 @@ You know what's easier than dealing with that? Just using this:
 ```yml
     - name: Install LinuxDeploy
       uses: miurahr/install-linuxdeploy-action@v0
+      with:
+        plugins: qt appimage
 ```
 
 All done.
