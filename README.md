@@ -7,7 +7,7 @@ See linuxdeploy utility details on [LinuxDeploy project](https://github.com/linu
 You know what's easier than dealing with that? Just using this:
 ```yml
     - name: Install LinuxDeploy
-      uses: miurahr/install-linuxdeploy-action@v0
+      uses: miurahr/install-linuxdeploy-action@v1
       with:
         plugins: qt appimage
 ```
