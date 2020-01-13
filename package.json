@@ -1,6 +1,6 @@
 {
   "name": "install-linuxdeploy-action",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "description": "Install linuxdeploy action for github actions",
   "main": "lib/main.js",
