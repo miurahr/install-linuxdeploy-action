@@ -5,7 +5,8 @@
   "description": "Install linuxdeploy action for github actions",
   "main": "lib/main.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "preversion": "npm ci && npm run build && npm ci --production && git add node_modules lib -f"
   },
   "repository": {
     "type": "git",
