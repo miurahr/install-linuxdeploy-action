@@ -4,6 +4,7 @@
   "private": true,
   "description": "Install linuxdeploy action for github actions",
   "main": "lib/main.js",
+  "icon": "linuxdeploy.png",
   "scripts": {
     "build": "tsc",
     "preversion": "npm ci && npm run build && npm ci --production && git add node_modules lib -f"
