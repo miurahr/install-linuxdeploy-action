@@ -1,4 +1,4 @@
-name: Test Installing LinuxDeployQt
+name: Test Installing LinuxDeploy with qt plugin and dir option
 
 on: [push, pull_request]
 
