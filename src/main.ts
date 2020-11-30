@@ -4,12 +4,7 @@ import * as exec from '@actions/exec';
 
 async function add_path(targetdir) {
   try {
-    const filePath = process.env['GITHUB_PATH'] || ''
-    if (filePath) {
-      await exec.exec(`echo "${targetdir}" >> $GITHUB_PATH`);
-    } else {
-      await exec.exec(`echo "PATH=${targetdir}" >> $GITHUB_ENV`);
-    }
+  	process.env['PATH'] = [targetdir, process.env.PATH].join(path.delimiter)
   } catch (error) {
     core.setFailed(error.message);
   }
