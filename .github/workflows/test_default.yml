@@ -16,7 +16,7 @@ jobs:
         run: npm run build
       - name: Install LinuxDeploy
         uses: ./
-      - name: List LinuxDeploy plugins
+      - name: Launch LinuxDeploy
         run: |
           linuxdeploy-x86_64.AppImage --version
         shell: bash
