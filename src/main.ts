@@ -2,6 +2,18 @@ import * as process from "process";
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 
+async function add_path(targetdir) {
+  try {
+    const filePath = process.env['GITHUB_PATH'] || ''
+    if (filePath) {
+      await exec.exec(`echo "${targetdir}" >> $GITHUB_PATH`]);
+    } else {
+      await exec.exec(`echo "PATH=${targetdir}" >> $GITHUB_ENV`);
+    }
+  } catch (error) {
+    core.setFailed(error.message);
+  }
+}
 
 async function install_target(target_base, name, targetdir) {
   try {
@@ -9,7 +21,6 @@ async function install_target(target_base, name, targetdir) {
     const executable = targetdir + '/' + name;
     await exec.exec(`wget -c -nv ${target} -O ${executable}`);
     await exec.exec(`chmod +x ${executable}`);
-    await exec.exec('echo',[`${targetdir}`,'>> $GITHUB_PATH']);
   } catch (error) {
     core.setFailed(error.message);
   }
@@ -48,7 +59,7 @@ async function run() {
         };
       }
     }
-
+    await add_path(targetdir)
   } catch (error) {
     core.setFailed(error.message);
   }
