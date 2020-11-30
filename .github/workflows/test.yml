@@ -17,6 +17,7 @@ jobs:
       - name: Install LinuxDeploy
         uses: ./
         with:
+          dir: ${{ github.workspace }}
           plugins: qt appimage
       - name: List LinuxDeploy plugins
         run: |
