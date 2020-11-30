@@ -9,7 +9,7 @@ async function install_target(target_base, name, targetdir) {
     const executable = targetdir + '/' + name;
     await exec.exec(`wget -c -nv ${target} -O ${executable}`);
     await exec.exec(`chmod +x ${executable}`);
-    core.addPath(targetdir);
+    await exec.exec('echo',[`${targetdir}`,'>> $GITHUB_PATH']);
   } catch (error) {
     core.setFailed(error.message);
   }
