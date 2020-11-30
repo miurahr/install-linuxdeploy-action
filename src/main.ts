@@ -6,7 +6,7 @@ async function add_path(targetdir) {
   try {
     const filePath = process.env['GITHUB_PATH'] || ''
     if (filePath) {
-      await exec.exec(`echo "${targetdir}" >> $GITHUB_PATH`]);
+      await exec.exec(`echo "${targetdir}" >> $GITHUB_PATH`);
     } else {
       await exec.exec(`echo "PATH=${targetdir}" >> $GITHUB_ENV`);
     }
