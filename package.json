@@ -1,6 +1,6 @@
 {
   "name": "install-linuxdeploy-action",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "private": true,
   "description": "Install linuxdeploy action for github actions",
   "main": "lib/main.js",
@@ -23,12 +23,12 @@
   "dependencies": {
     "@actions/core": "^1.2.6",
     "@actions/exec": "^1.0.0",
+    "@vercel/ncc": "^0.25.1",
     "tsc": "^1.20150623.0"
   },
   "devDependencies": {
     "@types/node": "^12.0.4",
     "@typescript-eslint/parser": "^4.8.1",
-    "@vercel/ncc": "^0.25.1",
     "eslint": "^7.13.0",
     "eslint-plugin-github": "^4.1.1",
     "js-yaml": "^3.14.0",
