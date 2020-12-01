@@ -31,7 +31,7 @@ jobs:
         shell: bash
       - name: Configure test Qt project
         run: |
-          tar xJf QtWidgetsApplication.tar.xz
+          tar xJf test/QtWidgetsApplication.tar.xz
           cd QtWidgetsApplication/
           qmake QtWidgetsApplication.pro
           make -j2
