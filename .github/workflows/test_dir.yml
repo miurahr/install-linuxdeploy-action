@@ -27,7 +27,7 @@ jobs:
         uses: jurplel/install-qt-action@v2
       - name: Install dependency
         run: |
-          sudo apt install -y libxkbcommon-x11-dev libxcb-icccm4
+          sudo apt install -y libxkbcommon-x11-dev libxcb-icccm4 libxcb-image0
         shell: bash
       - name: Configure test Qt project
         run: |
