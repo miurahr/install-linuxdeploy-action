@@ -1,6 +1,6 @@
 name: Test Installing LinuxDeploy on default options
 
-on: [push, pull_request]
+on: [push, pull_requst]
 
 jobs:
   test:
@@ -12,8 +12,8 @@ jobs:
           node-version: '10.x'
       - name: "npm install"
         run: npm install
-      - name: "npm run build"
-        run: npm run build
+      - name: "npm run all"
+        run: npm run all
       - name: Install LinuxDeploy
         uses: ./
       - name: Launch LinuxDeploy
