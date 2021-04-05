@@ -1,6 +1,6 @@
 name: Test Installing LinuxDeploy on default options
 
-on: [push, pull_requst]
+on: [push, pull_request]
 
 jobs:
   test:
