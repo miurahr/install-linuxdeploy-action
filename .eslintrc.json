@@ -1,6 +1,6 @@
 {
-    "plugins": ["jest", "@typescript-eslint"],
-    "extends": ["plugin:github/recommended"],
+    "plugins": ["github", "@typescript-eslint"],
+    "extends": ["plugin:github/typescript"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "ecmaVersion": 9,
@@ -49,6 +49,5 @@
     "env": {
       "node": true,
       "es6": true,
-      "jest/globals": {}
     }
   }
