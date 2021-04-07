@@ -1,6 +1,6 @@
 #!/bin/bash
 git checkout releases
-git merge --squash -m 'merge master into releases' master
+git merge -m 'merge master into releases' master
 npm install
 npm install -g @vercel/ncc
 ncc build lib/main.js --license license.txt
