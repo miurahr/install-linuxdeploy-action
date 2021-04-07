@@ -1,6 +1,7 @@
 import * as process from 'process'
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
+import * as dotenv from 'dotenv';
 
 async function install_target(target_base, name, targetdir): Promise<void> {
   try {
@@ -16,6 +17,7 @@ async function install_target(target_base, name, targetdir): Promise<void> {
 
 async function run(): Promise<void> {
   try {
+    dotenv.config();
     const targetdir: string = core.getInput('dir') || ''.concat(process.env.RUNNER_WORKSPACE, '/bin')
     await exec.exec(`mkdir -p ${targetdir}`)
     await install_target(
