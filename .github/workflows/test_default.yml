@@ -1,6 +1,10 @@
-name: Test Installing LinuxDeploy on default options
+name: Test Installing LinuxDeploy master/PR
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
+  pull_request:
 
 jobs:
   test:
