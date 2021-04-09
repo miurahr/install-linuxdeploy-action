@@ -6,6 +6,6 @@ npm install -g typescript
 npm install -g webpack
 npm install -g @vercel/ncc
 npm run all
-git add action.yml dist/index.js
+git add action.yml dist/
 git commit -sm 'Update release'
 git push origin releases
