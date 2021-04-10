@@ -1,10 +1,9 @@
-name: Test Installing LinuxDeploy with qt plugin and dir option on master/PR
+name: Test Release candidate
 
 on:
   push:
     branches:
-      - master
-  pull_request:
+      - releases
 
 jobs:
   test:
@@ -14,12 +13,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: "npm install"
-        run: npm install
-      - name: "npm run all"
-        run: npm run all
       - name: Install LinuxDeploy
-        uses: ./
+        uses:  miurahr/install-linuxdeploy-action@releases
         with:
           dir: ${{ github.workspace }}
           plugins: qt appimage

@@ -25,6 +25,7 @@
     "@actions/exec": "^1.0.0",
     "@vercel/ncc": "^0.25.1",
     "dotenv": "^8.2.0",
+    "temp": "^0.9.4",
     "webpack": "^5.31.2"
   },
   "devDependencies": {
