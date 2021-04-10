@@ -14,10 +14,12 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '12.x'
-      - name: "npm install"
+      - name: install dependencies
         run: npm install
-      - name: "npm run all"
-        run: npm run all
+      - name: check format & lint
+        run: npm run format-check && npm run lint
+      - name: build
+        run: npm run build && npm run package
       - name: Install LinuxDeploy
         uses: ./
       - name: Launch LinuxDeploy
