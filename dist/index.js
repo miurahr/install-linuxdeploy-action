@@ -88,7 +88,7 @@ var run = function () { return __awaiter(void 0, void 0, void 0, function () {
             case 2: return [4 /*yield*/, install_target('https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/', 'linuxdeploy-x86_64.AppImage', targetdir)];
             case 3:
                 _b.sent();
-                plugins = core.getInput("plugins").split(' ');
+                plugins = core.getInput('plugins').split(' ');
                 if (!plugins) return [3 /*break*/, 14];
                 _i = 0, plugins_1 = plugins;
                 _b.label = 4;
