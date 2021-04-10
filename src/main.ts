@@ -1,8 +1,5 @@
-import * as process from 'process';
 import * as core from '@actions/core';
 import * as exec from '@actions/exec';
-import * as dotenv from 'dotenv';
-dotenv.config();
 
 const install_target = async (target_base, name, targetdir): Promise<void> => {
   try {
@@ -18,7 +15,7 @@ const install_target = async (target_base, name, targetdir): Promise<void> => {
 
 const run = async (): Promise<void> => {
   try {
-    const targetdir: string = core.getInput('dir') || ''.concat(process.env.RUNNER_WORKSPACE || '', '/bin');
+    const targetdir: string = core.getInput('dir') || '/usr/local/bin';
     await exec.exec(`mkdir -p ${targetdir}`);
     await install_target(
       'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/',
