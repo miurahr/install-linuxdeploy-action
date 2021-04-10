@@ -22,5 +22,5 @@ jobs:
         uses: ./
       - name: Launch LinuxDeploy
         run: |
-          linuxdeploy-x86_64.AppImage --version
+          ${{ env.RUNNER_WORKSPACE }}/bin/linuxdeploy-x86_64.AppImage --version
         shell: bash
