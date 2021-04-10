@@ -13,7 +13,8 @@ const install_target = async (target_base, name, optionDir): Promise<void> => {
       await exec.exec(`chmod +x ${executable}`);
       core.debug(`Downloaded to ${executable}`)
     } else {
-  		executable = await tc.downloadTool(target)
+  		const folder: string = await tc.downloadTool(target)
+      executable = folder.concat(name)
       await exec.exec(`chmod +x ${executable}`);
       core.debug(`Downloaded to ${executable}`)
     }
