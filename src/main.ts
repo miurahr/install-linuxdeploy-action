@@ -1,25 +1,27 @@
-import * as process from 'process'
+import * as temp from 'temp'
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
-import dotenv from 'dotenv';
-dotenv.config();
 
-async function install_target(target_base, name, targetdir): Promise<void> {
+const install_target = async (target_base, name, targetdir): Promise<void> => {
   try {
     const target: string = target_base.concat(name)
+    core.info(`⬇Downloading ${name}...`)
     const executable: string = targetdir.concat('/', name)
     await exec.exec(`wget -c -nv ${target} -O ${executable}`)
     await exec.exec(`chmod +x ${executable}`)
-    core.addPath(targetdir)
+    core.debug(`Downloaded to ${executable}`)
   } catch (error) {
     core.setFailed(error.message)
   }
 }
 
-async function run(): Promise<void> {
+const run = async (): Promise<void> => {
   try {
-    const targetdir: string = core.getInput('dir') || ''.concat(process.env.RUNNER_WORKSPACE || '', '/bin')
-    await exec.exec(`mkdir -p ${targetdir}`)
+    const targetdir: string = core.getInput('dir') || temp.mkdirSync()
+    if (targetdir) {
+      await exec.exec(`mkdir -p ${targetdir}`)
+      core.addPath(targetdir)
+    }
     await install_target(
       'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/',
       'linuxdeploy-x86_64.AppImage',
