@@ -1,0 +1,28 @@
+name: Test Installing LinuxDeploy with plugins
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: install dependencies
+        run: npm install
+      - name: build
+        run: npm run build && npm run package
+      - name: Install LinuxDeploy
+        uses: ./
+        with:
+          plugins: qt appimage gtk ncurses gstreamer python conda
+      - name: List LinuxDeploy plugins
+        run: |
+          linuxdeploy-x86_64.AppImage --list-plugins
+        shell: bash
