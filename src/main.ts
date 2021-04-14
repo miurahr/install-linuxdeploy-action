@@ -39,6 +39,14 @@ const run = async (): Promise<void> => {
             )
             break
           }
+          case 'gtk': {
+            await install_target(
+              'https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/',
+              'linuxdeploy-plugin-gtk.sh',
+              targetdir
+            )
+            break
+          }
           case 'conda': {
             await install_target(
               'https://raw.githubusercontent.com/TheAssassin/linuxdeploy-plugin-conda/master/',
@@ -62,6 +70,21 @@ const run = async (): Promise<void> => {
               targetdir
             )
             break
+          }
+          case 'gstreamer': {
+            await install_target(
+              'https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gstreamer/master/',
+              'linuxdeploy-plugin-gstreamer.sh',
+              targetdir
+            )
+            break
+          }
+          case 'ncurses': {
+            await install_target(
+              'https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-ncurses/main/',
+              'linuxdeploy-plugin-ncurses.sh',
+              targetdir
+            )
           }
         }
       }

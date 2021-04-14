@@ -1,4 +1,4 @@
-name: Test Installing LinuxDeploy master/PR
+name: Test Installing LinuxDeploy with plugins
 
 on:
   push:
@@ -16,13 +16,13 @@ jobs:
           node-version: '12.x'
       - name: install dependencies
         run: npm install
-      - name: check format & lint
-        run: npm run format-check && npm run lint
       - name: build
         run: npm run build && npm run package
       - name: Install LinuxDeploy
         uses: ./
-      - name: Launch LinuxDeploy
+        with:
+          plugins: qt appimage gtk ncurses gstreamer python conda
+      - name: List LinuxDeploy plugins
         run: |
-          linuxdeploy-x86_64.AppImage --version
+          linuxdeploy-x86_64.AppImage --list-plugins
         shell: bash
