@@ -41,7 +41,7 @@ const run = async (): Promise<void> => {
           }
           case 'gtk': {
             await install_target(
-              'https://raw.githubusercontent.com/linuxdeploy/linux-deploy-plugin-gtk/master/',
+              'https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/',
               'linuxdeploy-plugin-gtk.sh',
               targetdir
             )
