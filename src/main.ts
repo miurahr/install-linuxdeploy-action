@@ -63,6 +63,14 @@ const run = async (): Promise<void> => {
             )
             break
           }
+          case 'gstreamer': {
+            await install_target(
+              'https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gstreamer/master/',
+              'linuxdeploy-plugin-gstreamer.sh',
+              targetdir
+            )
+            break
+          }
         }
       }
     }
