@@ -77,7 +77,7 @@ var run = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                _b.trys.push([0, 15, , 16]);
+                _b.trys.push([0, 21, , 22]);
                 targetdir = core.getInput('dir') || temp.mkdirSync();
                 if (!targetdir) return [3 /*break*/, 2];
                 return [4 /*yield*/, exec.exec("mkdir -p " + targetdir)];
@@ -89,45 +89,60 @@ var run = function () { return __awaiter(void 0, void 0, void 0, function () {
             case 3:
                 _b.sent();
                 plugins = core.getInput('plugins').split(' ');
-                if (!plugins) return [3 /*break*/, 14];
+                if (!plugins) return [3 /*break*/, 20];
                 _i = 0, plugins_1 = plugins;
                 _b.label = 4;
             case 4:
-                if (!(_i < plugins_1.length)) return [3 /*break*/, 14];
+                if (!(_i < plugins_1.length)) return [3 /*break*/, 20];
                 currentValue = plugins_1[_i];
                 _a = currentValue;
                 switch (_a) {
                     case 'qt': return [3 /*break*/, 5];
-                    case 'conda': return [3 /*break*/, 7];
-                    case 'python': return [3 /*break*/, 9];
-                    case 'appimage': return [3 /*break*/, 11];
+                    case 'gtk': return [3 /*break*/, 7];
+                    case 'conda': return [3 /*break*/, 9];
+                    case 'python': return [3 /*break*/, 11];
+                    case 'appimage': return [3 /*break*/, 13];
+                    case 'gstreamer': return [3 /*break*/, 15];
+                    case 'ncurses': return [3 /*break*/, 17];
                 }
-                return [3 /*break*/, 13];
+                return [3 /*break*/, 19];
             case 5: return [4 /*yield*/, install_target('https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/', 'linuxdeploy-plugin-qt-x86_64.AppImage', targetdir)];
             case 6:
                 _b.sent();
-                return [3 /*break*/, 13];
-            case 7: return [4 /*yield*/, install_target('https://raw.githubusercontent.com/TheAssassin/linuxdeploy-plugin-conda/master/', 'linuxdeploy-plugin-conda.sh', targetdir)];
+                return [3 /*break*/, 19];
+            case 7: return [4 /*yield*/, install_target('https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gtk/master/', 'linuxdeploy-plugin-gtk.sh', targetdir)];
             case 8:
                 _b.sent();
-                return [3 /*break*/, 13];
-            case 9: return [4 /*yield*/, install_target('https://github.com/niess/linuxdeploy-plugin-python/releases/download/continuous/', 'linuxdeploy-plugin-python-x86_64.AppImage', targetdir)];
+                return [3 /*break*/, 19];
+            case 9: return [4 /*yield*/, install_target('https://raw.githubusercontent.com/TheAssassin/linuxdeploy-plugin-conda/master/', 'linuxdeploy-plugin-conda.sh', targetdir)];
             case 10:
                 _b.sent();
-                return [3 /*break*/, 13];
-            case 11: return [4 /*yield*/, install_target('https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/', 'linuxdeploy-plugin-appimage-x86_64.AppImage', targetdir)];
+                return [3 /*break*/, 19];
+            case 11: return [4 /*yield*/, install_target('https://github.com/niess/linuxdeploy-plugin-python/releases/download/continuous/', 'linuxdeploy-plugin-python-x86_64.AppImage', targetdir)];
             case 12:
                 _b.sent();
-                return [3 /*break*/, 13];
-            case 13:
+                return [3 /*break*/, 19];
+            case 13: return [4 /*yield*/, install_target('https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/', 'linuxdeploy-plugin-appimage-x86_64.AppImage', targetdir)];
+            case 14:
+                _b.sent();
+                return [3 /*break*/, 19];
+            case 15: return [4 /*yield*/, install_target('https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-gstreamer/master/', 'linuxdeploy-plugin-gstreamer.sh', targetdir)];
+            case 16:
+                _b.sent();
+                return [3 /*break*/, 19];
+            case 17: return [4 /*yield*/, install_target('https://raw.githubusercontent.com/linuxdeploy/linuxdeploy-plugin-ncurses/main/', 'linuxdeploy-plugin-ncurses.sh', targetdir)];
+            case 18:
+                _b.sent();
+                _b.label = 19;
+            case 19:
                 _i++;
                 return [3 /*break*/, 4];
-            case 14: return [3 /*break*/, 16];
-            case 15:
+            case 20: return [3 /*break*/, 22];
+            case 21:
                 error_2 = _b.sent();
                 core.setFailed(error_2.message);
-                return [3 /*break*/, 16];
-            case 16: return [2 /*return*/];
+                return [3 /*break*/, 22];
+            case 22: return [2 /*return*/];
         }
     });
 }); };

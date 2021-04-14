@@ -18,7 +18,7 @@ You can call the utility like as follows:
 linuxdeploy-x86_64.AppImage --plugin=qt --output=appimage --create-desktop-file --executable=Apps --appdir appdir --icon-file=Apps.svg
 ```
 
-You can also optionally target directory to install, that is added to search PATH.
+You can also optionally specify a directory to install, that is added to search PATH.
 
 ```yml
     - name: Install LinuxDeploy
