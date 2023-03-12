@@ -20,7 +20,7 @@
   "author": "miurahr",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.9.1",
+    "@actions/core": "^1.10.0",
     "@actions/exec": "^1.1.1",
     "@vercel/ncc": "^0.25.1",
     "dotenv": "^8.2.0",
