@@ -7,12 +7,13 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: '12.x'
+          node-version: '16'
+      - run: sudo apt-get install -y libfuse2
       - name: Install LinuxDeploy
         uses:  miurahr/install-linuxdeploy-action@releases
         with:
