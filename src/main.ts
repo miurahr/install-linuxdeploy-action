@@ -18,12 +18,14 @@ const install_target = async (target_base, name, targetdir): Promise<void> => {
 const run = async (): Promise<void> => {
   try {
     const targetdir: string = core.getInput('dir') || temp.mkdirSync()
+    const linuxdeployRelease: string =
+      core.getInput('linuxdeploy-release') || 'continuous'
     if (targetdir) {
       await exec.exec(`mkdir -p ${targetdir}`)
       core.addPath(targetdir)
     }
     await install_target(
-      'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/',
+      `https://github.com/linuxdeploy/linuxdeploy/releases/download/${linuxdeployRelease}/`,
       'linuxdeploy-x86_64.AppImage',
       targetdir
     )
