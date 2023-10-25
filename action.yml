@@ -9,6 +9,8 @@ inputs:
     description: 'Directory to install'
   plugins:
     description: 'Plugin modules to install'
+  linuxdeploy-release:
+    description: 'The linuxdeploy release to install. By default it will use `continous`. See https://github.com/linuxdeploy/linuxdeploy/releases'
 runs:
   using: 'node16'
   main: 'dist/index.js'
