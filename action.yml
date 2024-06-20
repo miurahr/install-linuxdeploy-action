@@ -10,5 +10,5 @@ inputs:
   plugins:
     description: 'Plugin modules to install'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
