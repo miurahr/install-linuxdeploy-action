@@ -5,10 +5,15 @@ branding:
   icon: 'package'
   color: 'green'
 inputs:
+  arch:
+    description: 'Architecture to install for'
   dir:
     description: 'Directory to install'
   plugins:
     description: 'Plugin modules to install'
+outputs:
+  linuxdeploy:
+    description: 'Path to main linuxdeploy binary'
 runs:
   using: 'node20'
   main: 'dist/index.js'
