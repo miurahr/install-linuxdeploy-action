@@ -9,7 +9,7 @@ You can specify plugins.
 ```yml
     - name: Install LinuxDeploy
       id: install-linuxdeploy
-      uses: miurahr/install-linuxdeploy-action@v1
+      uses: miurahr/install-linuxdeploy-action@v1.8.0
       with:
         plugins: qt appimage
 ```
@@ -24,7 +24,7 @@ You can also optionally request installation of LinuxDeploy and plugins for a sp
 
 ```yml
     - name: Install LinuxDeploy
-      uses: miurahr/install-linuxdeploy-action@v1
+      uses: miurahr/install-linuxdeploy-action@v1.8.0
       with:
         dir: ${{ github.workspace }}
         arch: x64
