@@ -1,8 +1,24 @@
+import * as os from 'os'
 import * as temp from 'temp'
 import * as core from '@actions/core'
 import * as exec from '@actions/exec'
 
-const install_target = async (target_base, name, targetdir): Promise<void> => {
+const get_appimage_arch = (runner_arch: string): string => {
+  switch (runner_arch.toLowerCase()) {
+    case 'x64':
+      return 'x86_64'
+    case 'arm64':
+      return 'aarch64'
+    default:
+      throw `Unsupported runner architecture ${runner_arch}`
+  }
+}
+
+const install_target = async (
+  target_base,
+  name,
+  targetdir
+): Promise<string | undefined> => {
   try {
     const target: string = target_base.concat(name)
     core.info(`⬇Downloading ${name}...`)
@@ -10,6 +26,7 @@ const install_target = async (target_base, name, targetdir): Promise<void> => {
     await exec.exec(`wget -c -nv ${target} -O ${executable}`)
     await exec.exec(`chmod +x ${executable}`)
     core.debug(`Downloaded to ${executable}`)
+    return executable
   } catch (error) {
     core.setFailed(error.message)
   }
@@ -17,16 +34,20 @@ const install_target = async (target_base, name, targetdir): Promise<void> => {
 
 const run = async (): Promise<void> => {
   try {
+    const arch = get_appimage_arch(core.getInput('arch') || os.arch())
     const targetdir: string = core.getInput('dir') || temp.mkdirSync()
     if (targetdir) {
       await exec.exec(`mkdir -p ${targetdir}`)
       core.addPath(targetdir)
     }
-    await install_target(
+    const executable = await install_target(
       'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/',
-      'linuxdeploy-x86_64.AppImage',
+      `linuxdeploy-${arch}.AppImage`,
       targetdir
     )
+    if (executable) {
+      core.setOutput('linuxdeploy', executable)
+    }
     const plugins = core.getInput('plugins').split(' ')
     if (plugins) {
       for (const currentValue of plugins) {
@@ -34,7 +55,7 @@ const run = async (): Promise<void> => {
           case 'qt': {
             await install_target(
               'https://github.com/linuxdeploy/linuxdeploy-plugin-qt/releases/download/continuous/',
-              'linuxdeploy-plugin-qt-x86_64.AppImage',
+              `linuxdeploy-plugin-qt-${arch}.AppImage`,
               targetdir
             )
             break
@@ -58,7 +79,7 @@ const run = async (): Promise<void> => {
           case 'python': {
             await install_target(
               'https://github.com/niess/linuxdeploy-plugin-python/releases/download/continuous/',
-              'linuxdeploy-plugin-python-x86_64.AppImage',
+              `linuxdeploy-plugin-python-${arch}.AppImage`,
               targetdir
             )
             break
@@ -66,7 +87,7 @@ const run = async (): Promise<void> => {
           case 'appimage': {
             await install_target(
               'https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/download/continuous/',
-              'linuxdeploy-plugin-appimage-x86_64.AppImage',
+              `linuxdeploy-plugin-appimage-${arch}.AppImage`,
               targetdir
             )
             break
