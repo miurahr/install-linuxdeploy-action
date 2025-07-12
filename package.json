@@ -25,7 +25,7 @@
     "@vercel/ncc": "^0.38.3",
     "dotenv": "^17.1.0",
     "temp": "^0.9.4",
-    "webpack": "^5.100.0"
+    "webpack": "^5.100.1"
   },
   "devDependencies": {
     "@types/node": "^24.0.13",
