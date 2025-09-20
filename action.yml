@@ -5,12 +5,17 @@ branding:
   icon: 'package'
   color: 'green'
 inputs:
+  arch:
+    description: 'Architecture to install for'
   dir:
     description: 'Directory to install'
   plugins:
     description: 'Plugin modules to install'
   linuxdeploy-release:
     description: 'The linuxdeploy release to install. By default it will use `continous`. See https://github.com/linuxdeploy/linuxdeploy/releases'
+outputs:
+  linuxdeploy:
+    description: 'Path to main linuxdeploy binary'
 runs:
-  using: 'node16'
+  using: 'node20'
   main: 'dist/index.js'
