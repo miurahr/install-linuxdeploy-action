@@ -30,4 +30,13 @@ You can also optionally request installation of LinuxDeploy and plugins for a sp
         arch: x64
 ```
 
+You can also specify the [linuxdeploy release](https://github.com/linuxdeploy/linuxdeploy/releases) to install:
+
+```yml
+    - name: Install LinuxDeploy
+      uses: miurahr/install-linuxdeploy-action@v1
+      with:
+        linuxdeploy-release: 1-alpha-20230713-1
+```
+
 This action is distributed under the [MIT license](LICENSE).
