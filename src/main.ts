@@ -36,13 +36,15 @@ const run = async (): Promise<void> => {
   try {
     const arch = get_appimage_arch(core.getInput('arch') || os.arch())
     const targetdir: string = core.getInput('dir') || temp.mkdirSync()
+    const linuxdeployRelease: string =
+      core.getInput('linuxdeploy-release') || 'continuous'
     if (targetdir) {
       await exec.exec(`mkdir -p ${targetdir}`)
       core.addPath(targetdir)
     }
     const executable = await install_target(
-      'https://github.com/linuxdeploy/linuxdeploy/releases/download/continuous/',
-      `linuxdeploy-${arch}.AppImage`,
+      `https://github.com/linuxdeploy/linuxdeploy/releases/download/${linuxdeployRelease}/`,
+      'linuxdeploy-x86_64.AppImage',
       targetdir
     )
     if (executable) {
