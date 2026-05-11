@@ -15,5 +15,5 @@ outputs:
   linuxdeploy:
     description: 'Path to main linuxdeploy binary'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: 'dist/index.js'
