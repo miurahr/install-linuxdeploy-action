@@ -9,10 +9,10 @@ jobs:
   test:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: '20'
+          node-version: '24'
       - run: sudo apt-get install -y libfuse2
       - name: Install LinuxDeploy
         uses:  miurahr/install-linuxdeploy-action@releases
@@ -24,7 +24,7 @@ jobs:
           linuxdeploy-x86_64.AppImage --list-plugins
         shell: bash
       - name: Install Qt
-        uses: jurplel/install-qt-action@v2
+        uses: jurplel/install-qt-action@v4
       - name: Install dependency
         run: |
           sudo apt install -y libxkbcommon-x11-dev libxcb-icccm4-dev libxcb-image0-dev libxcb-keysyms1-dev libxcb-randr0-dev libxcb-shape0-dev libxcb-xfixes0-dev libxcb-xinerama0-dev libxcb-sync-dev  libxcb-render-util0-dev libxcb-shm0-dev
